@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/jdtoombs/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/home/jdtoombs/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
   ["guard-collection"] = {
     loaded = true,
     path = "/home/jdtoombs/.local/share/nvim/site/pack/packer/start/guard-collection",

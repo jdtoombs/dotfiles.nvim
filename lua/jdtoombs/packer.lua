@@ -44,4 +44,5 @@ return require('packer').startup(function(use)
  use { "nvimdev/guard-collection" }
  use { "nvimdev/guard.nvim" }
  use { "terrortylor/nvim-comment" }
+ use { "github/copilot.vim" } 
 end)
