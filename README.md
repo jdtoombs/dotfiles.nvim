@@ -17,3 +17,9 @@ sudo apt-get install neovim`
 - [Lua Line](https://github.com/nvim-lualine/lualine.nvim) (aesthetic only)
 - [Guard](https://github.com/nvimdev/guard.nvim) (formatting)
 - [Nvim Comment](https://github.com/terrortylor/nvim-comment) 
+- [Nvim Web Dev Icons](https://github.com/nvim-tree/nvim-web-devicons)
+- [Nvim TS Autotag](https://github.com/windwp/nvim-ts-autotag)
+- [Copilot](https://github.com/github/copilot.vim)
+
+# Theme
+- [Tokyo Night](https://github.com/folke/tokyonight.nvim)
