@@ -1,7 +1,7 @@
 # This config uses the unstable version of nvim
-`sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt-get update
-sudo apt-get install neovim`
+- `sudo add-apt-repository ppa:neovim-ppa/unstable`
+- `sudo apt-get update`
+- `sudo apt-get install neovim`
 
 # Prererequisites
 - Have [Packer](https://github.com/wbthomason/packer.nvim) installed (or other) `sudo apt-get update && sudo apt-get install packer`
