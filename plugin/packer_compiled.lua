@@ -160,7 +160,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["oil.nvim"] = {
-    config = { "\27LJ\2\2]\0\0\3\0\6\0\t6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\1B\0\2\1K\0\1\0\17view_options\1\0\0\1\0\1\16show_hidden\2\nsetup\boil\frequire\0" },
+    config = { "\27LJ\2\2w\0\0\3\0\b\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\1B\0\2\1K\0\1\0\fkeymaps\1\0\1\n<C-h>\1\17view_options\1\0\0\1\0\1\16show_hidden\2\nsetup\boil\frequire\0" },
     loaded = true,
     path = "/home/jdtoombs/.local/share/nvim/site/pack/packer/start/oil.nvim",
     url = "https://github.com/stevearc/oil.nvim"
@@ -195,7 +195,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: oil.nvim
 time([[Config for oil.nvim]], true)
-try_loadstring("\27LJ\2\2]\0\0\3\0\6\0\t6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\1B\0\2\1K\0\1\0\17view_options\1\0\0\1\0\1\16show_hidden\2\nsetup\boil\frequire\0", "config", "oil.nvim")
+try_loadstring("\27LJ\2\2w\0\0\3\0\b\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\1B\0\2\1K\0\1\0\fkeymaps\1\0\1\n<C-h>\1\17view_options\1\0\0\1\0\1\16show_hidden\2\nsetup\boil\frequire\0", "config", "oil.nvim")
 time([[Config for oil.nvim]], false)
 
 _G._packer.inside_compile = false
