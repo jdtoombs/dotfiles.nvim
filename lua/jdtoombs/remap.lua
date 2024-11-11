@@ -1,8 +1,8 @@
 -- space for leader
 vim.g.mapleader = " "
 
--- file explorer 
-vim.keymap.set("n", "<leader>fe", vim.cmd.Ex)
+-- file explorer, comment out for now since I'm using oil.nvim
+-- vim.keymap.set("n", "<leader>fe", vim.cmd.Ex)
 
 -- replace current word
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -14,3 +14,6 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- keep cursor in middle when jumping up/down page
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- setup oil.nvim
+vim.keymap.set("n", "<leader>fe", "<CMD>Oil<CR>", { desc = "Open parent directory" })
