@@ -1,10 +1,8 @@
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd("colorscheme terafox")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
-
-vim.api.nvim_set_hl(0, "@comment.doc", { fg = "#FF0000" })
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
