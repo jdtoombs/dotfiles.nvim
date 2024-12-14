@@ -1,2 +1,2 @@
-require("jdtoombs.remap")
-require("jdtoombs.set")
+require('jdtoombs.remap')
+require('jdtoombs.opts')
