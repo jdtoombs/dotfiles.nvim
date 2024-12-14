@@ -26,5 +26,11 @@ return {
 				lsp_zero.default_setup,
 			},
 		})
+		local cmp = require('cmp')
+		cmp.setup({
+			mapping = {
+			    ['<CR>'] = cmp.mapping.confirm({ select = true })
+			},
+		})
 	end,
 }
