@@ -1,6 +1,3 @@
--- space for leader
-vim.g.mapleader = " "
-
 -- replace current word
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
