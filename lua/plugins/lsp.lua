@@ -13,10 +13,18 @@ return {
 	config = function()
 		local lsp_zero = require('lsp-zero')
 
-		lsp_zero.on_attach(function(_, bufnr)
-			-- see :help lsp-zero-keybindings
-			-- to learn the available actions
+		lsp_zero.on_attach(function(client, bufnr)
 			lsp_zero.default_keymaps({ buffer = bufnr })
+
+			-- Format on save
+			if client.server_capabilities.documentFormattingProvider then
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					buffer = bufnr,
+					callback = function()
+						vim.lsp.buf.format({ async = false })
+					end,
+                })
+			end
 		end)
 
 		require('mason').setup({})
