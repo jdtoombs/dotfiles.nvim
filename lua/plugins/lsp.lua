@@ -21,11 +21,33 @@ return {
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					buffer = bufnr,
 					callback = function()
-						vim.lsp.buf.format({ async = false })
+						if vim.bo.modified then
+							vim.lsp.buf.format({ async = false })
+						end
 					end,
-                })
+				})
 			end
 		end)
+
+		require('lspconfig').lua_ls.setup({
+			settings = {
+				Lua = {
+					runtime = {
+						version = 'LuaJIT',
+						path = vim.split(package.path, ';'),
+					},
+					diagnostics = {
+						globals = { 'vim' },
+					},
+					workspace = {
+						library = {
+							[vim.fn.expand('$VIMRUNTIME/lua')] = true,
+							[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+						},
+					},
+				},
+			},
+		})
 
 		require('mason').setup({})
 		require('mason-lspconfig').setup({
@@ -37,7 +59,7 @@ return {
 		local cmp = require('cmp')
 		cmp.setup({
 			mapping = {
-			    ['<CR>'] = cmp.mapping.confirm({ select = true })
+				['<CR>'] = cmp.mapping.confirm({ select = true })
 			},
 		})
 	end,

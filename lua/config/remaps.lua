@@ -11,11 +11,11 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- toggle copilot
 vim.keymap.set("n", "<leader>cp", function()
-    if vim.g.copilot_enabled then
-        vim.cmd("Copilot disable")
-        print("Copilot disabled")
-    else
-        vim.cmd("Copilot enable")
-        print("Copilot enabled")
-    end
+	if vim.g.copilot_enabled then
+		vim.cmd("Copilot disable")
+		print("Copilot disabled")
+	else
+		vim.cmd("Copilot enable")
+		print("Copilot enabled")
+	end
 end, { desc = "Toggle Copilot" })
