@@ -1,13 +1,11 @@
 return {
 	'VonHeikemen/lsp-zero.nvim',
-	branch = 'v3.x',
+	branch = 'v4.x',
 	dependencies = {
 		-- LSP Support
 		'neovim/nvim-lspconfig',
-		-- Autocompletion
-		'hrsh7th/nvim-cmp',
-		'hrsh7th/cmp-nvim-lsp',
-		'L3MON4D3/LuaSnip'
+		'williamboman/mason.nvim',
+		'williamboman/mason-lspconfig.nvim',
 	},
 
 	config = function()
@@ -54,12 +52,6 @@ return {
 			ensure_installed = {},
 			handlers = {
 				lsp_zero.default_setup,
-			},
-		})
-		local cmp = require('cmp')
-		cmp.setup({
-			mapping = {
-				['<CR>'] = cmp.mapping.confirm({ select = true })
 			},
 		})
 	end,
