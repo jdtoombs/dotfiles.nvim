@@ -8,14 +8,3 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- keep cursor in middle when jumping up/down page
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
--- toggle copilot
-vim.keymap.set("n", "<leader>cp", function()
-	if vim.g.copilot_enabled then
-		vim.cmd("Copilot disable")
-		print("Copilot disabled")
-	else
-		vim.cmd("Copilot enable")
-		print("Copilot enabled")
-	end
-end, { desc = "Toggle Copilot" })

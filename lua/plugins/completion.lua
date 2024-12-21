@@ -8,7 +8,6 @@ return {
 			'hrsh7th/cmp-nvim-lsp',
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-buffer',
-			{ 'L3MON4D3/LuaSnip', build = "make install_jsregexp" },
 			'saadparwaiz1/cmp_luasnip',
 			'zbirenbaum/copilot.lua',
 			'zbirenbaum/copilot-cmp',
@@ -24,12 +23,12 @@ return {
 				mapping = {
 					['<CR>'] = cmp.mapping.confirm({ select = true }),
 					['<S-Tab>'] = cmp.mapping.select_next_item(),
+					['<Tab>'] = cmp.mapping.select_prev_item(),
 				},
 				sources = {
 					{ name = 'nvim_lsp' },
 					{ name = 'buffer' },
 					{ name = 'path' },
-					{ name = 'luasnip' },
 					{ name = 'copilot' },
 				},
 				formatting = {

@@ -1,62 +1,94 @@
+local commands = require('goaterm.commands')
+
 local M = {}
 
-local state = {
-	win = nil,
-	buf = nil
+local terminal = {
+	screen = nil,
+	sessions = {},
+	current_session = nil
 }
 
-function M.toggle(opts)
-	opts = opts or {}
+local width = math.floor(vim.o.columns * 0.8)
+local height = math.floor(vim.o.lines * 0.8)
+local y = math.floor((vim.o.lines - height) / 2 - 1)
+local x = math.floor((vim.o.columns - width) / 2)
 
-	if state.win and vim.api.nvim_win_is_valid(state.win) then
-		vim.api.nvim_win_close(state.win, true)
-		state.win = nil
-		return
-	end
-
-	local editor_width = vim.o.columns
-	local editor_height = vim.o.lines
-
-	local win_width = opts.width or math.floor(editor_width * 0.5)
-	local win_height = opts.height or math.floor(editor_height * 0.5)
-
-	local col = math.floor((editor_width - win_width) / 2)
-	local row = math.floor((editor_height - win_height) / 2)
-
-	local window_opts = {
-		relative = 'editor',
-		width = win_width,
-		height = win_height,
-		col = col,
-		row = row,
-		style = 'minimal',
-		border = 'rounded'
-	}
-
-	if not (state.buf and vim.api.nvim_buf_is_valid(state.buf)) then
-		state.buf = vim.api.nvim_create_buf(false, true)
-		vim.bo[state.buf].modifiable = true
-	end
-
-	state.win = vim.api.nvim_open_win(state.buf, true, window_opts)
-
-	if vim.fn.bufname(state.buf) == "" then
-		-- look into vim.fn.termopen later for more flexibility
-		vim.cmd("term")
-	end
-
-	vim.cmd("startinsert")
+local function buffer_empty(bufnr)
+	return (vim.api.nvim_buf_line_count(bufnr) == 1) and
+			(vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] == "")
 end
 
-function M.setup(opts)
-	opts = opts or {}
-	vim.api.nvim_create_user_command("Goaterm", function()
-		M.toggle(opts)
-	end, {})
+function M.next_tab()
+	if #terminal.sessions > 1 then
+		local next_index = (terminal.current_session % #terminal.sessions) + 1
+		vim.api.nvim_win_set_buf(0, terminal.sessions[next_index])
+		terminal.current_session = next_index
+	end
+end
 
-	vim.api.nvim_set_keymap('n', '<leader>gt', ':Goaterm<CR>', { noremap = true, silent = true })
-	-- lagged space bar actions when spacebar used for below keymap
-	vim.api.nvim_set_keymap('t', '<Esc><Esc>', '<C-\\><C-n>:Goaterm<CR>', { noremap = true, silent = true })
+function M.create_new_tab(init)
+	local function insert_tab()
+		table.insert(terminal.sessions, vim.api.nvim_create_buf(false, true))
+		terminal.current_session = #terminal.sessions
+	end
+
+	if init then
+		insert_tab()
+	else
+		insert_tab()
+		-- need to change window to use new tab buffer here
+		-- @todo check what mode they want to launch the tab in
+		-- 0 means current window
+		if buffer_empty(terminal.sessions[terminal.current_session]) then
+			vim.api.nvim_win_set_buf(0, terminal.sessions[terminal.current_session])
+			vim.fn.termopen(vim.o.shell)
+		end
+		print("Tab length" .. terminal.current_session)
+	end
+end
+
+function M.on()
+	-- Create a new buffer if non exist
+	if #terminal.sessions == 0 then
+		M.create_new_tab(true)
+	end
+
+	-- Set window options
+	local opts = {
+		style = "minimal",
+		relative = "editor",
+		border = "rounded",
+		width = width,
+		height = height,
+		row = y,
+		col = x,
+	}
+
+	-- Create the floating window
+	terminal.screen = vim.api.nvim_open_win(terminal.sessions[terminal.current_session], true, opts)
+
+	-- @todo: check if type is shell before starting in insert mode
+	-- Check if the buffer is empty, and only start the terminal if it is unmodified
+	if buffer_empty(terminal.sessions[terminal.current_session]) then
+		-- Start the terminal in the buffer
+		vim.fn.termopen(vim.o.shell)
+		vim.cmd('startinsert')
+	else
+		-- Old buffer show to user
+		vim.api.nvim_set_current_win(terminal.screen)
+		vim.cmd('startinsert')
+	end
+end
+
+function M.off()
+	if terminal.screen and vim.api.nvim_win_is_valid(terminal.screen) then
+		vim.api.nvim_win_close(terminal.screen, true)
+		terminal.screen = nil
+	end
+end
+
+function M.setup()
+	commands.register_commands(M)
 end
 
 return M
