@@ -1,8 +1,10 @@
-local M = {}
-local terminal = require("goaterm.terminal")
+local terminal = require("goaterm.core")
 
-function M.setup()
-	terminal.setup()
+local M = {}
+
+function M.setup(opts)
+	opts = opts or {}
+	terminal.setup(opts)
 end
 
 return M

@@ -3,10 +3,9 @@ return {
 		"goaterm",
 		dev = true,
 		dir = "~/.config/nvim/lua/goaterm",
+		opts = {},
 		config = function()
-			require "goaterm".setup {
-				-- options will go here
-			}
+			require("goaterm").setup()
 		end,
 	}
 }

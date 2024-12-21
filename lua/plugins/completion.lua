@@ -1,3 +1,4 @@
+-- @todo: clean this up :^)
 return {
 	{
 		'hrsh7th/nvim-cmp',
