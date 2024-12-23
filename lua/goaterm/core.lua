@@ -15,7 +15,7 @@ local x = math.floor((vim.o.columns - width) / 2)
 
 local function buffer_empty(bufnr)
 	return (vim.api.nvim_buf_line_count(bufnr) == 1) and
-			(vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] == "")
+		(vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] == "")
 end
 
 function M.next_tab()
@@ -67,16 +67,13 @@ function M.on()
 	-- Create the floating window
 	terminal.screen = vim.api.nvim_open_win(terminal.sessions[terminal.current_session], true, opts)
 
-	-- @todo: check if type is shell before starting in insert mode
 	-- Check if the buffer is empty, and only start the terminal if it is unmodified
 	if buffer_empty(terminal.sessions[terminal.current_session]) then
 		-- Start the terminal in the buffer
 		vim.fn.termopen(vim.o.shell)
-		vim.cmd('startinsert')
 	else
 		-- Old buffer show to user
 		vim.api.nvim_set_current_win(terminal.screen)
-		vim.cmd('startinsert')
 	end
 end
 

@@ -6,7 +6,7 @@ function M.register_commands(plugin)
 	vim.api.nvim_create_user_command('GoatermOn', function()
 		plugin.on()
 	end, { desc = 'Toggle floating terminal window' })
-	vim.api.nvim_set_keymap('n', '<C-g>t', ':GoatermOn<CR>', { noremap = true, silent = true })
+	vim.api.nvim_set_keymap('n', '<C-g>t', ':GoatermOn<CR>i', { noremap = true, silent = true })
 
 	-- Power off command
 	vim.api.nvim_create_user_command('GoatermOff', function()
