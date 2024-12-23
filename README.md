@@ -1,12 +1,12 @@
 ## Folder Details
 
 ├── init.lua<br>
-├── lazy-lock.json
-├── lua
-│   ├── config
-│   ├── goaterm
-│   └── plugins
-└── README.md
+├── lazy-lock.json<br>
+├── lua<br>
+│   ├── config<br>
+│   ├── goaterm<br>
+│   └── plugins<br>
+└── README.md<br>
 
 
 - **`lua/config`**: Configuration for lazyvim, remappings, random goodies (helpful executions), and nvim options.
