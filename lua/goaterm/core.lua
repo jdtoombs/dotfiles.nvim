@@ -85,7 +85,6 @@ function M.off()
 end
 
 function M.setup(opts)
-	print(opts)
 	commands.register_commands(M)
 end
 

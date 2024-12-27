@@ -12,7 +12,6 @@ M.load_env = function()
 	file:close()
 
 	for line in io.lines(env_file) do
-		print(line)
 		local key, value = line:match("^([%w_]+)=(.+)$")
 		env[key] = value
 	end
