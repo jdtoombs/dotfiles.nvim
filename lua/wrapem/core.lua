@@ -6,6 +6,8 @@ local options = {
 	["["] = "]",
 	["<"] = ">",
 	["\""] = "\"",
+	["`"] = "`",
+
 }
 
 local function is_whitespace(char)
