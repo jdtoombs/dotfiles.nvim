@@ -5,7 +5,7 @@ return {
 		autotag = {
 			enable = true,
 		},
-		ensure_installed = { "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query", "python", "rust" },
+		ensure_installed = { "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query", "python", "rust", "jsx", "tsx", "html" },
 		sync_install = false,
 		auto_install = true,
 		highlight = {

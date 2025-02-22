@@ -1,6 +1,6 @@
 return {
-	'EdenEast/nightfox.nvim',
+	"rebelot/kanagawa.nvim",
 	config = function()
-		vim.cmd('colorscheme nightfox')
+		vim.cmd("colorscheme kanagawa")
 	end,
 }

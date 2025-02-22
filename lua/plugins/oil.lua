@@ -12,6 +12,9 @@ return {
 
 			require("oil").setup {
 				columns = { "icon" },
+				adapters = {
+					["ssh"] = true,
+				},
 				keymaps = {
 					["<C-h>"] = false,
 					["<C-l>"] = false,
