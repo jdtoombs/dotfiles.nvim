@@ -2,8 +2,7 @@
 return {
 	{
 		'hrsh7th/nvim-cmp',
-		lazy = false,
-		priority = 100,
+		event = 'InsertEnter',
 		dependencies = {
 			'onsails/lspkind.nvim',
 			'hrsh7th/cmp-nvim-lsp',
@@ -23,8 +22,8 @@ return {
 			cmp.setup({
 				mapping = {
 					['<CR>'] = cmp.mapping.confirm({ select = true }),
-					['<S-Tab>'] = cmp.mapping.select_next_item(),
-					['<Tab>'] = cmp.mapping.select_prev_item(),
+					['<Tab>'] = cmp.mapping.select_next_item(),
+					['<S-Tab>'] = cmp.mapping.select_prev_item(),
 				},
 				sources = {
 					{ name = 'nvim_lsp' },
